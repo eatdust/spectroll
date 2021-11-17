@@ -86,7 +86,14 @@ class spectrum(object):
     def set_spectrum(self,wavelength,intensity):
         self.spectrum = np.interp(self.nm,wavelength,intensity,left=0.,right=0.)
         self.irradiance = np.trapz(self.spectrum,self.nm)
+        self.L=-1
+        self.M=-1
+        self.S=-1
+        self.X=-1
+        self.Y=-1
+        self.Z=-1
 
+        
     def get_spectrum(self):
         return self.nm, self.spectrum
         
