@@ -195,7 +195,7 @@ class spectrum(object):
         Yb = 1.0
         Zb = (1.0 - chroma['xb'] - chroma['yb'])/chroma['yb']
 
-        S2W = [[Xr,Xg,Xb],[Yr,Yg,Yb],[Zr,Zg,Zb]]
+        S2W = np.array([[Xr,Xg,Xb],[Yr,Yg,Yb],[Zr,Zg,Zb]])
         W2S = np.linalg.inv(S2W)
 
         Srgb = np.matmul(W2S,np.array([Xw,Yw,Zw]).transpose())
@@ -203,7 +203,7 @@ class spectrum(object):
         Sg = Srgb[1]
         Sb = Srgb[2]
         
-        self.RGB2XYZ=[[Sr*Xr,Sg*Xg,Sb*Xb],[Sr*Yr,Sg*Yg,Sb*Yb],[Sr*Zr,Sg*Zg,Sb*Zb]]
+        self.RGB2XYZ=np.array([[Sr*Xr,Sg*Xg,Sb*Xb],[Sr*Yr,Sg*Yg,Sb*Yb],[Sr*Zr,Sg*Zg,Sb*Zb]])
         self.XYZ2RGB = np.linalg.inv(self.RGB2XYZ)
 
     def get_RGB2XYZ(self):
