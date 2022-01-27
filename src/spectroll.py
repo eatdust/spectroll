@@ -129,13 +129,13 @@ class spectrum(object):
         return np.array([self.get_L(),self.get_M(),self.get_S()]).transpose()
     
     def get_l(self):
-        return self.L/(self.L+self.M+self.S)
+        return self.get_L()/(self.get_L()+self.get_M()+self.get_S())
 
     def get_m(self):
-        return self.M/(self.L+self.M+self.S)
+        return self.get_M()/(self.get_L()+self.get_M()+self.get_S())
 
     def get_s(self):
-        return self.S/(self.L+self.M+self.S)
+        return self.get_S()/(self.get_L()+self.get_M()+self.get_S())
 
 
     def get_lms(self):
@@ -170,13 +170,13 @@ class spectrum(object):
         return np.matmul(LMS2XYZ,LMS)
     
     def get_x(self):
-        return self.X/(self.X+self.Y+self.Z)
+        return self.get_X()/(self.get_X()+self.get_Y()+self.get_Z())
 
     def get_y(self):
-        return self.Y/(self.X+self.Y+self.Z)
+        return self.get_Y()/(self.get_X()+self.get_Y()+self.get_Z())
 
     def get_z(self):
-        return self.Z/(self.X+self.Y+self.Z)
+        return self.get_Z()/(self.get_X()+self.get_Y()+self.get_Z())
 
     def get_xyz(self):
         return np.array([self.get_x(),self.get_y(),self.get_z()]).transpose()
@@ -210,7 +210,7 @@ class spectrum(object):
         return self.RGB2XYZ
 
     def get_XYZ2RGB(self):
-        return self.RGB2XYZ
+        return self.XYZ2RGB
 
     def get_RGB(self):
         return np.matmul(self.XYZ2RGB,self.get_XYZ())

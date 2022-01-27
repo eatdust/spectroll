@@ -18,12 +18,12 @@ D65 = sp.spectrum(name='D65',filename='data/illuminant_D65.dat')
 wavelength,white = D65.get_spectrum()
 
 #that is supposed to be white for sRGB
-XYZD65 = D65.get_XYZ()
-LMSD65 = D65.get_LMS()
+D65_XYZ = D65.get_XYZ()
+D65_LMS = D65.get_LMS()
 
 print("D65 illuminant: ")
-print("XYZ=",XYZD65)
-#print("test",D65.get_XYZ_from_LMS(LMSD65))
+print("XYZ=",D65_XYZ)
+#print("test",D65.get_XYZ_from_LMS(D65_LMS))
 
 Xw = D65.get_X()
 Yw = D65.get_Y()
@@ -46,18 +46,19 @@ wavelength, rhod = RESP.get_spectrum()
 
 print("Multiplying by D65 spectrum...")
 RHODW.set_spectrum(wavelength,rhod*white)
-XYZRHODW = RHODW.get_XYZ()
-LMSRHODW = RHODW.get_LMS()
+RHODW_XYZ = RHODW.get_XYZ()
+RHODW_LMS = RHODW.get_LMS()
 
 print("Rhodopic D65:")
-print("XYZ= ",XYZRHODW)
-#print("test",RHODW.get_XYZ_from_LMS(LMSRHODW))
+print("XYZ= ",RHODW_XYZ)
+#print("test",RHODW.get_XYZ_from_LMS(RHODW_LMS))
 
 print()
 print("Setting RGB2XYZ transform based on D65 daylight white point:")
 print("Xw= Yw= Zw= ",Xw,Yw,Zw)
 
 RHODW.set_RGB2XYZ_transforms(sp.sRGBchromaD65,Xw,Yw,Zw)
+print("XYZ2RGB= ",RHODW.get_XYZ2RGB())
 
 print()
 print("White under night vision is: ")
